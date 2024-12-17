@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+section{
+    border: 2px solid;
+    width: 70%;
+    height: 150vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: skyblue;
+    justify-content: space-around;
+}
+/* section p:hover{
+  color: black;
+} */
+article{
+    border-radius: 15px;
+    height: 130px;
+    width: 90%;
+    margin: auto;
+    background-color: beige;
+    text-align: center;
+}
+article p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+article a {
+  text-decoration: none;
+  color: red;
+}
+article a:hover {
+  color: black;
+}
+article p:first-child {
+  font-weight: bold;
+  font-size: 18px;
+} 
+
+h1{
+    color: red;
+}
+.nav{
+    height: 50px;
+    width: 100%;
+    padding-left: 10px;
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 2px;
+}
+.nav-link {
+  color: #fff; 
+  text-decoration: none;
+  margin-right: 20px; 
+  transition: color 0.2s ease; 
+}
+
+.nav-link:hover {
+  color: #ccc; 
+}
+.nav-link.active {
+  color: #fff; 
+  border-bottom: 2px solid #fff; 
+}
+button{
+    height: 20px;
+    width: 80px;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+    
+        <nav class="nav">
+            <form action="" method="POST">
+                {% csrf_token %}
+            <a class="nav-link active" aria-current="page" href="#">My Blogs</a>
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#">About</a>
+            <input type="text" placeholder="search" name="search">
+            <button type="submit">SEARCH</button>
+            </form>
+          </nav><br><br>
+
+     
+    <section>
+        <!-- {{data}} -->
+            {% for i in data %}
+    
+        <article>
+            <!-- <h1>{{i.article}}</h1> -->
+            <!-- <p>{{i.description|truncatewords:10}}</p> -->
+
+            <p>{{i.id}}</p>
+            <a href="{% url 'details' i.id %}"><p>{{i.Article}}</p></a>
+            <p>{{i.description|truncatewords:10}}</p> 
+        </article>
+            {% endfor %}
+    </section>
+
+</body>
+</html>
+ 
